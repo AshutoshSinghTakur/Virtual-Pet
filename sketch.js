@@ -1,6 +1,7 @@
 var dog,sadDog,happyDog;
 var database;
 var feed
+var lastFed, foodObj;
 
 function preload(){
   sadDog=loadImage("Images/Dog.png");
@@ -16,18 +17,18 @@ function setup() {
 
   feed= createButton("Feed the dog");
   feed.position(700,95);
-  feed.mousePressed(feedDog);
+  feed.mousePressed(feedDog)
 
   addFood = createButton("Add Food");
   addFood.position(800, 95)
-  addFood.mousePressed(addFood)
+  addFood.mousePressed(addFoods)
   
   dog=createSprite(800,200,150,150);
   dog.addImage(sadDog);
   dog.scale=0.15;
 
-  foodObj = new Food(200,100);
-  lastFed = new Food(350,30);
+  //foodObj = new Food(200,100);
+  //lastFed = new Food(350,30);
   foodStock = new Food(100,100);
 
 }
@@ -50,7 +51,7 @@ function draw() {
     text("Last Feed : "+ lastFed + "AM", 350, 30);
   }
 
-  foodObj.display();
+  //foodObj.display();
   foodStock.display();
 
   drawSprites();
@@ -59,7 +60,7 @@ function draw() {
 //function to read food Stock
 function readStock(data){
   foodS = data.val();
-  foodObj.updateFoodStock(foodS)
+  foodStock.updateFoodStock(foodS)
 }
 
 //function to update food stock and last fed time
@@ -79,4 +80,8 @@ function addFoods(){
   database.ref('/').update({
     Food:foodS
    })
+  }
+
+  function mousePressed(){
+    foodObj.getFoodStock()-1
   }
