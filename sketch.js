@@ -5,7 +5,7 @@ var lastFed, foodObj;
 
 function preload(){
   sadDog=loadImage("Images/Dog.png");
-  happyDog=loadImage("Images/happy dog.png");
+  happyDog = loadImage("Images/happy dog.png");
 }
 
 function setup() {
@@ -67,9 +67,9 @@ function readStock(data){
 function feedDog(){
   dog.addImage(happyDog);
 
-  foodObj.updateFoodStock(foodObj.getFoodStock()-1);
+  foodStock.updateFoodStock(foodStock.getFoodStock()-1);
   database.ref('/').update({
-    Food: foodObj.getFoodStock(),
+    Food: foodStock.getFoodStock(),
     FeedTime: hour()
   })
 }

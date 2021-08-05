@@ -10,7 +10,7 @@ class Food {
    }
    
    updateFoodStock(foodStock){
-    this.foodStock=foodStock;
+   this.foodStock=foodStock;
    }
 
    deductFood(){
@@ -40,8 +40,5 @@ class Food {
           x = x+ 30;
         }
       }
-      //feed.mousePressed(function(){
-      //  feedDog();
-      //})
     }
 }
